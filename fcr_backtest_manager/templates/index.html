@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCR Backtest Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            padding: 20px;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            background: rgba(30, 30, 50, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+        }
+
+        .card-header {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px 12px 0 0 !important;
+            font-weight: 600;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+            color: #ffffff;
+        }
+
+        .metric-label {
+            font-size: 12px;
+            color: #d0d0e0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .form-control, .form-select {
+            background: rgba(40, 40, 60, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background: rgba(50, 50, 70, 0.9);
+            border-color: #667eea;
+            color: #fff;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .form-label {
+            color: #e0e0f0;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .btn-success {
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(56, 239, 125, 0.3);
+        }
+
+        .table {
+            color: #e0e0e0;
+        }
+        
+        .table thead th {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .table tbody td {
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        h1 {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #38ef7d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .win {
+            color: #38ef7d;
+            font-weight: 600;
+        }
+
+        .loss {
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        .timeout {
+            color: #ffd93d;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>FCR Backtest Manager</h1>
+        </div>
+
+        <div class="card">
+            <div class="card-header text-white">Configuration</div>
+            <div class="card-body">
+                <form id="backtestForm">
+                    <div class="row g-3">
+                        <div class="col-md-2">
+                            <label class="form-label">Ticker</label>
+                            <input type="text" class="form-control" id="ticker" value="SPY">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="startDate" value="2025-01-12">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="endDate" value="2026-01-15">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Strategy</label>
+                            <select class="form-select" id="strategy">
+                                <option value="A">Strategy A (5m → 1m)</option>
+                                <option value="B">Strategy B (30m → 5m)</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <label class="form-label">R:R Ratio</label>
+                            <input type="number" step="0.5" min="1" max="10" class="form-control" id="customRR" value="5.5" title="Risk/Reward ratio. Optimized default: 5.5:1">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Risk per Trade ($)</label>
+                            <input type="number" class="form-control" id="risk" value="100">
+                        </div>
+                        <div class="col-md-1">
+                            <label class="form-label">Capital ($)</label>
+                            <input type="number" class="form-control" id="initialCapital" value="1000">
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-success" id="runButton">🚀 Run Backtest</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="resultsSection" style="display:none;">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="metric-value" id="totalTrades">0</div>
+                            <div class="metric-label">Total Trades</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="metric-value" id="winRate">0%</div>
+                            <div class="metric-label">Win Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="metric-value" id="totalPnl">$0</div>
+                            <div class="metric-label">Total PnL</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="metric-value" id="finalEquity">$0</div>
+                            <div class="metric-label">Final Equity</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="metric-value" id="profitFactor">0</div>
+                            <div class="metric-label">Profit Factor</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header text-white">Equity Curve (Account Balance)</div>
+                <div class="card-body">
+                    <div id="equityChart"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header text-white">Trade Log</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Entry Time</th>
+                                    <th>Direction</th>
+                                    <th>Entry</th>
+                                    <th>Stop</th>
+                                    <th>Target</th>
+                                    <th>Exit</th>
+                                    <th>Outcome</th>
+                                    <th>PnL</th>
+                                    <th>Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tradesTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorSection" class="alert alert-danger" style="display:none;"></div>
+    </div>
+
+    <script>
+        document.getElementById('backtestForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('runButton');
+            btn.disabled = true;
+            btn.innerHTML = '🔄 Running...';
+
+            const payload = {
+                ticker: document.getElementById('ticker').value,
+                start_date: document.getElementById('startDate').value,
+                end_date: document.getElementById('endDate').value,
+                strategy: document.getElementById('strategy').value,
+                risk: document.getElementById('risk').value,
+                initial_capital: document.getElementById('initialCapital').value,
+                custom_rr: document.getElementById('customRR').value
+            };
+
+            try {
+                const response = await fetch('/api/backtest', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const results = await response.json();
+
+                if (results.error) {
+                    document.getElementById('errorSection').innerText = results.error;
+                    document.getElementById('errorSection').style.display = 'block';
+                    document.getElementById('resultsSection').style.display = 'none';
+                } else {
+                    document.getElementById('errorSection').style.display = 'none';
+                    document.getElementById('resultsSection').style.display = 'block';
+
+                    // Update Metrics
+                    const m = results.metrics;
+                    document.getElementById('totalTrades').innerText = m.total_trades;
+                    document.getElementById('winRate').innerText = m.win_rate + '%';
+                    document.getElementById('totalPnl').innerText = '$' + m.total_pnl.toLocaleString();
+                    document.getElementById('finalEquity').innerText = '$' + m.final_equity.toLocaleString();
+                    document.getElementById('profitFactor').innerText = m.profit_factor;
+
+                    // Style PnL colors
+                    const pnlEl = document.getElementById('totalPnl');
+                    pnlEl.style.color = m.total_pnl >= 0 ? '#38ef7d' : '#ff6b6b';
+
+                    // Update Equity Chart
+                    const eq = results.equity_curve;
+                    Plotly.newPlot('equityChart', [{
+                        x: eq.map(e => e.date),
+                        y: eq.map(e => e.equity),
+                        type: 'scatter',
+                        mode: 'lines',
+                        name: 'Equity Curve',
+                        line: { color: '#38ef7d', width: 2 },
+                        fill: 'tozeroy',
+                        fillcolor: 'rgba(56, 239, 125, 0.1)'
+                    }], {
+                        title: { text: 'Equity Curve', font: { color: '#fff' } },
+                        paper_bgcolor: 'rgba(0,0,0,0)',
+                        plot_bgcolor: 'rgba(0,0,0,0)',
+                        xaxis: { color: '#888', gridcolor: 'rgba(255,255,255,0.1)' },
+                        yaxis: { color: '#888', gridcolor: 'rgba(255,255,255,0.1)' },
+                        margin: { t: 40, l: 60, r: 20, b: 40 }
+                    }, { responsive: true });
+
+                    // Update Trades Table
+                    const tbody = document.getElementById('tradesTable');
+                    tbody.innerHTML = '';
+                    results.trades.forEach((t, i) => {
+                        const outcomeClass = t.outcome === 'WIN' ? 'win' : (t.outcome === 'LOSS' ? 'loss' : 'timeout');
+                        const pnlClass = t.pnl >= 0 ? 'win' : 'loss';
+                        tbody.innerHTML += `
+                            <tr>
+                                <td>${i + 1}</td>
+                                <td>${t.entry_time}</td>
+                                <td>${t.direction}</td>
+                                <td>$${t.entry_price}</td>
+                                <td>$${t.stop_price}</td>
+                                <td>$${t.target_price}</td>
+                                <td>$${t.exit_price || '-'}</td>
+                                <td class="${outcomeClass}">${t.outcome}</td>
+                                <td class="${pnlClass}">$${t.pnl}</td>
+                                <td>$${t.balance_after}</td>
+                            </tr>
+                        `;
+                    });
+                }
+            } catch (err) {
+                document.getElementById('errorSection').innerText = 'Error: ' + err.message;
+                document.getElementById('errorSection').style.display = 'block';
+            }
+
+            btn.disabled = false;
+            btn.innerHTML = '🚀 Run Backtest';
+        });
+    </script>
+</body>
+
+</html>

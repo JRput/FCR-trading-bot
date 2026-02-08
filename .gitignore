@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# API keys
+*.key
+*.pem
+secrets.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Node
+node_modules/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Data cache (optional - you may want to commit these)
+# Uncomment the line below if you don't want to commit cached data
+# data_cache/
+
+# Personal configs
+personal/
+private/
+
+# Local drafts
+marketing/
+
