@@ -1,5 +1,6 @@
 """
 FCR Backtest Manager - Flask Web Application
+Includes TSLA Strategy A Test Bot for Paper Trading
 """
 
 from flask import Flask, render_template, request, jsonify
@@ -7,6 +8,8 @@ from datetime import datetime
 import pandas as pd
 
 from backtester import run_backtest
+from tsla_backtester import run_tsla_backtest
+from tsla_live_bot import get_bot, start_bot, stop_bot, get_bot_status
 
 app = Flask(__name__)
 
@@ -37,10 +40,22 @@ def api_backtest():
     except ValueError:
         return jsonify({"error": "Invalid date format. Use YYYY-MM-DD"}), 400
     
-    results = run_backtest(
-        ticker, start_date, end_date, strategy, 
-        risk_per_trade, initial_capital, custom_rr
-    )
+    # Check if using TSLA Trading Strategy
+    if strategy == 'TSLA':
+        results = run_tsla_backtest(
+            start_date=start_date,
+            end_date=end_date,
+            risk_per_trade=risk_per_trade,
+            initial_capital=initial_capital,
+            custom_rr=custom_rr,
+            use_filters=True,
+            use_trailing_be=True
+        )
+    else:
+        results = run_backtest(
+            ticker, start_date, end_date, strategy, 
+            risk_per_trade, initial_capital, custom_rr
+        )
     
     # Process results for JSON serialization
     if "trades" in results:
@@ -51,6 +66,51 @@ def api_backtest():
                 trade["exit_time"] = trade["exit_time"].strftime('%Y-%m-%d %H:%M:%S')
                 
     return jsonify(results)
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TSLA STRATEGY A TEST BOT API ENDPOINTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+@app.route('/api/bot/start', methods=['POST'])
+def api_bot_start():
+    """Start the TSLA Strategy A trading bot."""
+    try:
+        result = start_bot()
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/bot/stop', methods=['POST'])
+def api_bot_stop():
+    """Stop the TSLA Strategy A trading bot."""
+    try:
+        result = stop_bot()
+        return jsonify(result)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/bot/status', methods=['GET'])
+def api_bot_status():
+    """Get the current status of the TSLA Strategy A trading bot."""
+    try:
+        status = get_bot_status()
+        return jsonify(status)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/bot/account', methods=['GET'])
+def api_bot_account():
+    """Get the Alpaca paper trading account information."""
+    try:
+        bot = get_bot()
+        account = bot.get_account_info()
+        return jsonify(account)
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == '__main__':

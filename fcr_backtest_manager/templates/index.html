@@ -110,38 +110,161 @@
             color: #ffd93d;
             font-weight: 600;
         }
+
+        .be {
+            color: #87ceeb;
+            font-weight: 600;
+        }
+
+        /* Trading Bot Styles */
+        .bot-card {
+            background: linear-gradient(135deg, rgba(17, 153, 142, 0.2) 0%, rgba(56, 239, 125, 0.1) 100%);
+            border: 1px solid rgba(56, 239, 125, 0.3);
+        }
+        
+        .bot-card .card-header {
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-running {
+            background: rgba(56, 239, 125, 0.2);
+            color: #38ef7d;
+            border: 1px solid rgba(56, 239, 125, 0.5);
+        }
+        
+        .status-stopped {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255, 107, 107, 0.5);
+        }
+        
+        .status-waiting {
+            background: rgba(255, 217, 61, 0.2);
+            color: #ffd93d;
+            border: 1px solid rgba(255, 217, 61, 0.5);
+        }
+        
+        .btn-bot-start {
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .btn-bot-stop {
+            background: linear-gradient(90deg, #ff416c 0%, #ff6b6b 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .bot-stat {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .bot-stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .bot-stat-label {
+            font-size: 11px;
+            color: #a0a0b0;
+            text-transform: uppercase;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .nav-tabs .nav-link {
+            color: #a0a0b0;
+            border: none;
+            padding: 12px 24px;
+        }
+        
+        .nav-tabs .nav-link.active {
+            background: rgba(102, 126, 234, 0.3);
+            color: #fff;
+            border: none;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-tabs {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-content {
+            padding-top: 20px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>FCR Backtest Manager</h1>
+            <h1>FCR Trading System</h1>
         </div>
 
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-tabs mb-0" id="mainTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="backtest-tab" data-bs-toggle="tab" data-bs-target="#backtestPanel" type="button" role="tab">
+                    📊 Backtest
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="bot-tab" data-bs-toggle="tab" data-bs-target="#botPanel" type="button" role="tab">
+                    🤖 Live Trading Bot
+                </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="mainTabContent">
+            <!-- Backtest Panel -->
+            <div class="tab-pane fade show active" id="backtestPanel" role="tabpanel">
+        
         <div class="card">
             <div class="card-header text-white">Configuration</div>
             <div class="card-body">
                 <form id="backtestForm">
                     <div class="row g-3">
                         <div class="col-md-2">
+                            <label class="form-label">Strategy</label>
+                            <select class="form-select" id="strategy">
+                                <option value="A">Strategy A (5m → 1m)</option>
+                                <option value="B">Strategy B (30m → 5m)</option>
+                                <option value="TSLA">TSLA Trading Strategy ⚡</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2" id="tickerGroup">
                             <label class="form-label">Ticker</label>
                             <input type="text" class="form-control" id="ticker" value="SPY">
                         </div>
                         <div class="col-md-2">
                             <label class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="startDate" value="2025-01-12">
+                            <input type="date" class="form-control" id="startDate" value="2023-01-01">
                         </div>
                         <div class="col-md-2">
                             <label class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="endDate" value="2026-01-15">
-                        </div>
-                        <div class="col-md-2">
-                            <label class="form-label">Strategy</label>
-                            <select class="form-select" id="strategy">
-                                <option value="A">Strategy A (5m → 1m)</option>
-                                <option value="B">Strategy B (30m → 5m)</option>
-                            </select>
+                            <input type="date" class="form-control" id="endDate" value="2025-12-31">
                         </div>
                         <div class="col-md-1">
                             <label class="form-label">R:R Ratio</label>
@@ -149,11 +272,11 @@
                         </div>
                         <div class="col-md-2">
                             <label class="form-label">Risk per Trade ($)</label>
-                            <input type="number" class="form-control" id="risk" value="100">
+                            <input type="number" class="form-control" id="risk" value="1000">
                         </div>
                         <div class="col-md-1">
                             <label class="form-label">Capital ($)</label>
-                            <input type="number" class="form-control" id="initialCapital" value="1000">
+                            <input type="number" class="form-control" id="initialCapital" value="5000">
                         </div>
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-success" id="runButton">🚀 Run Backtest</button>
@@ -164,6 +287,11 @@
         </div>
 
         <div id="resultsSection" style="display:none;">
+            <!-- Strategy Info Banner for TSLA -->
+            <div id="tslaInfoBanner" class="alert mb-3" style="display:none; background: linear-gradient(90deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2)); border: 1px solid rgba(102,126,234,0.5); color: #e0e0f0;">
+                <strong>⚡ TSLA Trading Strategy</strong> - Optimized filters: Entry 9:30-11:30, FC range 0.5-2%, trailing stop to BE after 1R
+            </div>
+            
             <div class="row">
                 <div class="col-md-2">
                     <div class="card text-center">
@@ -181,7 +309,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2" id="beTradesCard" style="display:none;">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="metric-value be" id="beTrades">0</div>
+                            <div class="metric-label">Break-Even</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
                     <div class="card text-center">
                         <div class="card-body">
                             <div class="metric-value" id="totalPnl">$0</div>
@@ -189,7 +325,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="card text-center">
                         <div class="card-body">
                             <div class="metric-value" id="finalEquity">$0</div>
@@ -241,21 +377,188 @@
         </div>
 
         <div id="errorSection" class="alert alert-danger" style="display:none;"></div>
+        
+            </div>
+            
+            <!-- Live Trading Bot Panel -->
+            <div class="tab-pane fade" id="botPanel" role="tabpanel">
+                
+                <!-- Bot Control Card -->
+                <div class="card bot-card">
+                    <div class="card-header text-white d-flex justify-content-between align-items-center">
+                        <span>🤖 TSLA Strategy A Test Bot</span>
+                        <span class="status-badge status-stopped" id="botStatusBadge">STOPPED</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <h5 style="color: #38ef7d; margin-bottom: 5px;">Paper Trading Account</h5>
+                                <p style="color: #a0a0b0; font-size: 13px; margin-bottom: 15px;">
+                                    Strategy A on TSLA with $500 risk per trade
+                                </p>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-bot-start" id="btnStartBot" onclick="startBot()">
+                                        ▶ Start Bot
+                                    </button>
+                                    <button class="btn btn-bot-stop" id="btnStopBot" onclick="stopBot()" disabled>
+                                        ◼ Stop Bot
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col bot-stat">
+                                        <div class="bot-stat-value" id="botEquity">$0</div>
+                                        <div class="bot-stat-label">Account Equity</div>
+                                    </div>
+                                    <div class="col bot-stat">
+                                        <div class="bot-stat-value" id="botBuyingPower">$0</div>
+                                        <div class="bot-stat-label">Buying Power</div>
+                                    </div>
+                                    <div class="col bot-stat">
+                                        <div class="bot-stat-value" id="botTradesToday">0</div>
+                                        <div class="bot-stat-label">Trades Today</div>
+                                    </div>
+                                    <div class="col bot-stat">
+                                        <div class="bot-stat-value" id="botTotalPnl">$0</div>
+                                        <div class="bot-stat-label">Total PnL</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bot Configuration Info -->
+                <div class="card">
+                    <div class="card-header text-white">Strategy Configuration</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #a0a0b0;">Strategy Name</label>
+                                    <div style="color: #fff; font-weight: 500;">TSLA Strategy A Test Bot</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #a0a0b0;">Ticker</label>
+                                    <div style="color: #fff; font-weight: 500;">TSLA</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #a0a0b0;">Risk per Trade</label>
+                                    <div style="color: #38ef7d; font-weight: 500;">$500</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #a0a0b0;">Capital</label>
+                                    <div style="color: #fff; font-weight: 500;">$5,000</div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #a0a0b0;">R:R Ratio</label>
+                                    <div style="color: #fff; font-weight: 500;">5.5:1</div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: #a0a0b0;">Account Type</label>
+                                    <div style="color: #ffd93d; font-weight: 500;">📄 Paper Trading</div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="border-color: rgba(255,255,255,0.1);">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="form-label" style="color: #a0a0b0;">Strategy A Rules (from strategy.py)</label>
+                                <ul style="color: #d0d0e0; font-size: 13px;">
+                                    <li><strong>Anchor Timeframe:</strong> 5-minute first candle at 9:30 AM ET</li>
+                                    <li><strong>Confirmation Timeframe:</strong> 1-minute chart for FVG detection</li>
+                                    <li><strong>FVG Detection:</strong> Bullish FVG (candle[i+2].low > candle[i].high) or Bearish FVG</li>
+                                    <li><strong>Entry Signal:</strong> Retest into FVG gap + engulfing candle confirmation</li>
+                                    <li><strong>First Candle Break:</strong> Price must break FC high (bullish) or FC low (bearish) before FVG forms</li>
+                                    <li><strong>Trade Management:</strong> Fixed stop at retest low/high, target at 5.5R</li>
+                                    <li>Maximum 1 trade per day</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bot Status Details -->
+                <div class="card">
+                    <div class="card-header text-white">Live Status</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label class="form-label" style="color: #a0a0b0;">Current State</label>
+                                <div style="color: #fff; font-weight: 500;" id="botState">Idle</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" style="color: #a0a0b0;">First Candle</label>
+                                <div id="botFirstCandle" style="color: #fff;">-</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" style="color: #a0a0b0;">Active Position</label>
+                                <div id="botActivePosition" style="color: #fff;">None</div>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label" style="color: #a0a0b0;">Session Stats</label>
+                                <div id="botSessionStats" style="color: #fff;">W: 0 | L: 0 | BE: 0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Handle strategy selection change
+        document.getElementById('strategy').addEventListener('change', function() {
+            const strategy = this.value;
+            const tickerGroup = document.getElementById('tickerGroup');
+            const tickerInput = document.getElementById('ticker');
+            const riskInput = document.getElementById('risk');
+            const capitalInput = document.getElementById('initialCapital');
+            const rrInput = document.getElementById('customRR');
+            
+            if (strategy === 'TSLA') {
+                // Auto-configure for TSLA strategy
+                tickerInput.value = 'TSLA';
+                tickerInput.disabled = true;
+                tickerGroup.style.opacity = '0.6';
+                riskInput.value = '1000';
+                capitalInput.value = '5000';
+                rrInput.value = '5.5';
+            } else {
+                // Reset for other strategies
+                tickerInput.disabled = false;
+                tickerGroup.style.opacity = '1';
+            }
+        });
+
         document.getElementById('backtestForm').addEventListener('submit', async function (e) {
             e.preventDefault();
 
             const btn = document.getElementById('runButton');
             btn.disabled = true;
             btn.innerHTML = '🔄 Running...';
+            
+            const strategy = document.getElementById('strategy').value;
+            const isTslaStrategy = strategy === 'TSLA';
 
             const payload = {
-                ticker: document.getElementById('ticker').value,
+                ticker: isTslaStrategy ? 'TSLA' : document.getElementById('ticker').value,
                 start_date: document.getElementById('startDate').value,
                 end_date: document.getElementById('endDate').value,
-                strategy: document.getElementById('strategy').value,
+                strategy: strategy,
                 risk: document.getElementById('risk').value,
                 initial_capital: document.getElementById('initialCapital').value,
                 custom_rr: document.getElementById('customRR').value
@@ -286,6 +589,19 @@
                     document.getElementById('finalEquity').innerText = '$' + m.final_equity.toLocaleString();
                     document.getElementById('profitFactor').innerText = m.profit_factor;
 
+                    // Show/hide TSLA-specific elements
+                    const tslaInfoBanner = document.getElementById('tslaInfoBanner');
+                    const beTradesCard = document.getElementById('beTradesCard');
+                    
+                    if (isTslaStrategy) {
+                        tslaInfoBanner.style.display = 'block';
+                        beTradesCard.style.display = 'block';
+                        document.getElementById('beTrades').innerText = m.be_trades || 0;
+                    } else {
+                        tslaInfoBanner.style.display = 'none';
+                        beTradesCard.style.display = 'none';
+                    }
+
                     // Style PnL colors
                     const pnlEl = document.getElementById('totalPnl');
                     pnlEl.style.color = m.total_pnl >= 0 ? '#38ef7d' : '#ff6b6b';
@@ -314,7 +630,10 @@
                     const tbody = document.getElementById('tradesTable');
                     tbody.innerHTML = '';
                     results.trades.forEach((t, i) => {
-                        const outcomeClass = t.outcome === 'WIN' ? 'win' : (t.outcome === 'LOSS' ? 'loss' : 'timeout');
+                        let outcomeClass = 'timeout';
+                        if (t.outcome === 'WIN') outcomeClass = 'win';
+                        else if (t.outcome === 'LOSS') outcomeClass = 'loss';
+                        else if (t.outcome === 'BE') outcomeClass = 'be';
                         const pnlClass = t.pnl >= 0 ? 'win' : 'loss';
                         tbody.innerHTML += `
                             <tr>
@@ -339,6 +658,167 @@
 
             btn.disabled = false;
             btn.innerHTML = '🚀 Run Backtest';
+        });
+
+        // ═══════════════════════════════════════════════════════════════════════════════
+        // TRADING BOT CONTROLS
+        // ═══════════════════════════════════════════════════════════════════════════════
+        
+        let botStatusInterval = null;
+        
+        async function startBot() {
+            try {
+                const btn = document.getElementById('btnStartBot');
+                btn.disabled = true;
+                btn.innerHTML = '⏳ Starting...';
+                
+                const response = await fetch('/api/bot/start', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.status === 'started' || result.status === 'already_running') {
+                    updateBotUI(true);
+                    startStatusPolling();
+                } else if (result.error) {
+                    alert('Error starting bot: ' + result.error);
+                    btn.disabled = false;
+                    btn.innerHTML = '▶ Start Bot';
+                }
+            } catch (err) {
+                alert('Error: ' + err.message);
+                document.getElementById('btnStartBot').disabled = false;
+                document.getElementById('btnStartBot').innerHTML = '▶ Start Bot';
+            }
+        }
+        
+        async function stopBot() {
+            try {
+                const btn = document.getElementById('btnStopBot');
+                btn.disabled = true;
+                btn.innerHTML = '⏳ Stopping...';
+                
+                const response = await fetch('/api/bot/stop', { method: 'POST' });
+                const result = await response.json();
+                
+                updateBotUI(false);
+                stopStatusPolling();
+                
+            } catch (err) {
+                alert('Error: ' + err.message);
+            }
+        }
+        
+        function updateBotUI(isRunning) {
+            const btnStart = document.getElementById('btnStartBot');
+            const btnStop = document.getElementById('btnStopBot');
+            const badge = document.getElementById('botStatusBadge');
+            
+            if (isRunning) {
+                btnStart.disabled = true;
+                btnStart.innerHTML = '▶ Running';
+                btnStop.disabled = false;
+                btnStop.innerHTML = '◼ Stop Bot';
+                badge.className = 'status-badge status-running pulse';
+                badge.innerText = 'RUNNING';
+            } else {
+                btnStart.disabled = false;
+                btnStart.innerHTML = '▶ Start Bot';
+                btnStop.disabled = true;
+                btnStop.innerHTML = '◼ Stop Bot';
+                badge.className = 'status-badge status-stopped';
+                badge.innerText = 'STOPPED';
+            }
+        }
+        
+        async function refreshBotStatus() {
+            try {
+                // Get bot status
+                const statusRes = await fetch('/api/bot/status');
+                const status = await statusRes.json();
+                
+                // Get account info
+                const accountRes = await fetch('/api/bot/account');
+                const account = await accountRes.json();
+                
+                // Update UI
+                if (status.running) {
+                    updateBotUI(true);
+                } else {
+                    updateBotUI(false);
+                }
+                
+                // Update account stats
+                document.getElementById('botEquity').innerText = '$' + (account.equity || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                document.getElementById('botBuyingPower').innerText = '$' + (account.buying_power || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                
+                // Update bot stats
+                document.getElementById('botTradesToday').innerText = status.trades_today || 0;
+                
+                const totalPnl = status.stats?.total_pnl || 0;
+                const pnlEl = document.getElementById('botTotalPnl');
+                pnlEl.innerText = '$' + totalPnl.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                pnlEl.style.color = totalPnl >= 0 ? '#38ef7d' : '#ff6b6b';
+                
+                // Update state
+                const stateMap = {
+                    'idle': 'Idle',
+                    'waiting_market_open': 'Waiting for Market Open',
+                    'waiting_first_candle': 'Waiting for First Candle',
+                    'scanning_for_signal': 'Scanning for Signals',
+                    'in_position': 'In Position',
+                    'stopped': 'Stopped'
+                };
+                document.getElementById('botState').innerText = stateMap[status.state] || status.state;
+                
+                // Update first candle info
+                if (status.first_candle && status.first_candle.high) {
+                    const fc = status.first_candle;
+                    document.getElementById('botFirstCandle').innerHTML = 
+                        `High: $${fc.high.toFixed(2)} | Low: $${fc.low.toFixed(2)} | ${fc.valid ? '<span style="color:#38ef7d">Valid</span>' : '<span style="color:#ff6b6b">Invalid</span>'}`;
+                } else {
+                    document.getElementById('botFirstCandle').innerText = '-';
+                }
+                
+                // Update active position
+                if (status.active_trade && status.active_trade.direction) {
+                    const trade = status.active_trade;
+                    const dirColor = trade.direction === 'LONG' ? '#38ef7d' : '#ff6b6b';
+                    document.getElementById('botActivePosition').innerHTML = 
+                        `<span style="color:${dirColor}">${trade.direction}</span> @ $${trade.entry_price?.toFixed(2)} | Stop: $${trade.stop_price?.toFixed(2)} | Target: $${trade.target_price?.toFixed(2)}`;
+                } else {
+                    document.getElementById('botActivePosition').innerText = 'None';
+                }
+                
+                // Update session stats
+                const stats = status.stats || {};
+                document.getElementById('botSessionStats').innerHTML = 
+                    `<span style="color:#38ef7d">W: ${stats.wins || 0}</span> | <span style="color:#ff6b6b">L: ${stats.losses || 0}</span> | <span style="color:#87ceeb">BE: ${stats.be_trades || 0}</span>`;
+                
+            } catch (err) {
+                console.error('Error refreshing bot status:', err);
+            }
+        }
+        
+        function startStatusPolling() {
+            if (botStatusInterval) clearInterval(botStatusInterval);
+            refreshBotStatus();
+            botStatusInterval = setInterval(refreshBotStatus, 5000);
+        }
+        
+        function stopStatusPolling() {
+            if (botStatusInterval) {
+                clearInterval(botStatusInterval);
+                botStatusInterval = null;
+            }
+        }
+        
+        // Initial status check when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshBotStatus();
+            
+            // Start polling when bot tab is clicked
+            document.getElementById('bot-tab').addEventListener('shown.bs.tab', function() {
+                refreshBotStatus();
+            });
         });
     </script>
 </body>

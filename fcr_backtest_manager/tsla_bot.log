@@ -1,0 +1,359 @@
+2026-02-11 18:25:42,686 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2026-02-11 18:25:42,686 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-11 18:25:49,943 [INFO] 127.0.0.1 - - [11/Feb/2026 18:25:49] "GET / HTTP/1.1" 200 -
+2026-02-11 18:25:50,289 [INFO] 🤖 TSLA Strategy A Test Bot initialized
+2026-02-11 18:25:50,289 [INFO]    Ticker: TSLA
+2026-02-11 18:25:50,289 [INFO]    Risk per trade: $500
+2026-02-11 18:25:50,290 [INFO]    R:R Ratio: 5.5:1
+2026-02-11 18:25:50,290 [INFO]    Paper Trading: True
+2026-02-11 18:25:50,290 [INFO] 127.0.0.1 - - [11/Feb/2026 18:25:50] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:25:50,631 [INFO] 127.0.0.1 - - [11/Feb/2026 18:25:50] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:25:54,837 [INFO] 127.0.0.1 - - [11/Feb/2026 18:25:54] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:25:54,947 [INFO] 127.0.0.1 - - [11/Feb/2026 18:25:54] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:17,613 [INFO] 🔄 Daily state reset
+2026-02-11 18:26:17,613 [INFO] 🚀 Bot started - entering main loop
+2026-02-11 18:26:17,615 [INFO] 🤖 Bot thread started
+2026-02-11 18:26:17,629 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:17] "POST /api/bot/start HTTP/1.1" 200 -
+2026-02-11 18:26:17,645 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:17,742 [INFO] 📈 Market is open - waiting for first candle
+2026-02-11 18:26:17,929 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:22,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:22,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:27,795 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:27,894 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:29,351 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:29] "GET / HTTP/1.1" 200 -
+2026-02-11 18:26:29,886 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:29] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:30,108 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:30] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:32,108 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:32,214 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:33,222 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:33] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:33,326 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:33] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:38,228 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:38] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:38,347 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:38] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:43,223 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:43] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:43,326 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:43] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:47,902 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:48,025 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:48] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:52,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:52,754 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:26:58,220 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:58] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:26:58,372 [INFO] 127.0.0.1 - - [11/Feb/2026 18:26:58] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:02,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:02,756 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:07,645 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:07,758 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:12,644 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:12,739 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:17,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:17,752 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:22,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:22,749 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:27,643 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:27,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:33,220 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:33] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:33,337 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:33] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:38,217 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:38] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:38,333 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:38] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:43,219 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:43] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:43,323 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:43] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:48,217 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:48] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:48,321 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:48] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:53,211 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:53] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:53,306 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:53] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:27:58,219 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:58] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:27:58,341 [INFO] 127.0.0.1 - - [11/Feb/2026 18:27:58] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:03,217 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:03] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:03,316 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:03] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:08,232 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:08] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:08,353 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:08] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:13,217 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:13] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:13,321 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:13] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:18,214 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:18] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:18,319 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:18] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:23,215 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:23] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:23,320 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:23] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:28,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:28] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:28,585 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:28] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:28:55,239 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:55] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:28:55,350 [INFO] 127.0.0.1 - - [11/Feb/2026 18:28:55] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:10,251 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:10] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:10,391 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:10] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:12,652 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:12,769 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:17,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:17,746 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:22,644 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:22,738 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:27,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:27,750 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:32,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:32,745 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:37,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:37,742 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:42,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:42,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:47,644 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:47,755 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:52,667 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:52,772 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:29:57,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:29:57,762 [INFO] 127.0.0.1 - - [11/Feb/2026 18:29:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:02,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:02,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:07,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:07,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:12,645 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:12,743 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:17,663 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:17,769 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:22,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:22,750 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:27,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:27,746 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:32,645 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:32,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:37,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:37,748 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:42,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:42,748 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:47,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:47,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:52,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:52,748 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:30:57,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:30:57,750 [INFO] 127.0.0.1 - - [11/Feb/2026 18:30:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:02,654 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:02,756 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:07,663 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:07,777 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:12,665 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:12,765 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:18,231 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:18] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:18,341 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:18] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:23,217 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:23] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:23,317 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:23] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:28,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:28] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:28,315 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:28] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:33,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:33] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:33,317 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:33] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:38,215 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:38] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:38,315 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:38] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:43,227 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:43] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:43,328 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:43] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:48,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:48] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:48,320 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:48] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:53,218 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:53] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:53,323 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:53] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:31:58,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:58] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:31:58,316 [INFO] 127.0.0.1 - - [11/Feb/2026 18:31:58] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:03,218 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:03] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:03,325 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:03] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:08,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:08] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:08,320 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:08] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:13,216 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:13] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:13,313 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:13] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:26,345 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:26] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:26,483 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:26] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:27,649 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:27,750 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:32,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:32,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:37,654 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:37,760 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:42,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:42,751 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:47,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:47,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:52,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:52,739 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:32:57,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:32:57,752 [INFO] 127.0.0.1 - - [11/Feb/2026 18:32:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:02,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:02,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:07,649 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:07,748 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:12,657 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:12,759 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:17,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:17,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:22,645 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:22,738 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:27,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:27,752 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:32,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:32,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:37,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:37,750 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:42,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:42,739 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:47,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:47,770 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:52,653 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:52,768 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:33:57,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:33:57,739 [INFO] 127.0.0.1 - - [11/Feb/2026 18:33:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:02,649 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:02,754 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:07,649 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:07,752 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:12,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:12,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:17,665 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:17,769 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:22,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:22,753 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:27,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:27,745 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:32,653 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:32,751 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:37,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:37,770 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:42,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:42,770 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:47,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:47,745 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:52,654 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:52,765 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:34:57,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:34:57,746 [INFO] 127.0.0.1 - - [11/Feb/2026 18:34:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:02,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:02,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:07,654 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:07,768 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:12,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:12,750 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:17,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:17,748 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:22,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:22,751 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:27,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:27,753 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:32,656 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:32,770 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:37,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:37,749 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:42,646 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:42,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:47,649 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:47,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:52,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:52,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:35:57,653 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:35:57,756 [INFO] 127.0.0.1 - - [11/Feb/2026 18:35:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:02,652 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:02,749 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:07,649 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:07,743 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:12,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:12,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:17,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:17,743 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:22,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:22,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:27,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:27,759 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:32,657 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:32,790 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:37,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:37,746 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:42,670 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:42,766 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:47,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:47,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:52,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:52] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:52,744 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:52] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:36:57,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:36:57,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:36:57] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:02,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:02,764 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:07,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:07] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:07,749 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:07] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:12,652 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:12] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:12,754 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:12] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:17,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:17] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:17,743 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:17] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:22,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:22] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:22,741 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:22] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:27,651 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:27] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:27,747 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:27] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:32,648 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:32] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:32,743 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:32] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:37,650 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:37] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:37,749 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:37] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:42,647 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:42] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:42,743 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:42] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:47,654 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:47] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:47,771 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:47] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:37:54,597 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5001
+2026-02-11 18:37:54,597 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-11 18:37:57,656 [INFO] 🤖 TSLA Strategy A Test Bot initialized
+2026-02-11 18:37:57,656 [INFO]    Ticker: TSLA
+2026-02-11 18:37:57,656 [INFO]    Strategy: Strategy A (5min->1min), 5.5:1
+2026-02-11 18:37:57,656 [INFO]    Risk per trade: $500
+2026-02-11 18:37:57,657 [INFO]    R:R Ratio: 5.5:1
+2026-02-11 18:37:57,657 [INFO]    Paper Trading: True
+2026-02-11 18:37:57,666 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:57] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:37:58,003 [INFO] 127.0.0.1 - - [11/Feb/2026 18:37:58] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:02,659 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:02] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:02,785 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:02] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:05,888 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:05] "GET / HTTP/1.1" 200 -
+2026-02-11 18:38:05,966 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:05] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:06,064 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:06] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:10,697 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:10] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:10,797 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:10] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:29,440 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:29] "GET / HTTP/1.1" 200 -
+2026-02-11 18:38:30,076 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:30] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:30,264 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:30] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:31,280 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:31] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:31,386 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:31] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:40,385 [INFO] 🔄 Daily state reset
+2026-02-11 18:38:40,387 [INFO] 🚀 Bot started - entering main loop
+2026-02-11 18:38:40,387 [INFO]    Using Strategy: Strategy A (5min->1min), 5.5:1
+2026-02-11 18:38:40,387 [INFO] 🤖 Bot thread started
+2026-02-11 18:38:40,402 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:40] "POST /api/bot/start HTTP/1.1" 200 -
+2026-02-11 18:38:40,410 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:40] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:40,497 [INFO] 📈 Market is open - waiting for first candle
+2026-02-11 18:38:40,699 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:40] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:45,835 [INFO] ✅ First Candle captured: High=$435.84, Low=$427.95
+2026-02-11 18:38:45,835 [INFO] 🔍 Scanning for Strategy A signals...
+2026-02-11 18:38:46,221 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:46] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:46,319 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:46] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:51,018 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:38:51,218 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:51] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:51,314 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:51] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:55,416 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:55] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:38:55,515 [INFO] 127.0.0.1 - - [11/Feb/2026 18:38:55] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:38:56,221 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:01,225 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:01] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:01,335 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:01] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:01,429 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:06,218 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:06] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:06,368 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:06] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:06,693 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:10,420 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:10] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:10,534 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:10] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:11,895 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:15,412 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:15] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:15,508 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:15] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:17,089 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:20,413 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:20] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:20,519 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:20] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:22,282 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:25,414 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:25] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:25,516 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:25] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:27,483 [ERROR] Error fetching recent bars: {"message":"subscription does not permit querying recent SIP data"}
+
+2026-02-11 18:39:30,539 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:30] "GET /api/bot/status HTTP/1.1" 200 -
+2026-02-11 18:39:30,658 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:30] "GET /api/bot/account HTTP/1.1" 200 -
+2026-02-11 18:39:31,688 [INFO] 🛑 Stopping bot...
+2026-02-11 18:39:31,689 [INFO] 127.0.0.1 - - [11/Feb/2026 18:39:31] "POST /api/bot/stop HTTP/1.1" 200 -
+2026-02-11 18:39:32,487 [INFO] 🛑 Bot stopped
