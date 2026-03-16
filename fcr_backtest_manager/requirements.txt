@@ -5,6 +5,7 @@ numpy>=1.24.0
 alpaca-py>=0.13.0
 plotly>=5.15.0
 pytz>=2023.3
+websocket-client>=1.6.0
 
 # ML Optimization Dependencies
 optuna>=3.4.0

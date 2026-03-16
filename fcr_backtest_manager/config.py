@@ -1,9 +1,9 @@
 import os
 
-# Alpaca API Credentials
+# Alpaca API Credentials - Test2 Paper Trading Account
 # Replace with your actual API keys
-ALPACA_API_KEY = "PKGS7NJABTSN35EXMJDKLSKPJ6"
-ALPACA_API_SECRET = "Epz3cNtfUrBmFr353bKXRA9exa2naVJiw7mrnPEAuEmc"
+ALPACA_API_KEY = "PKNNXOM2FRQJIYEREBUHHTJGC7"
+ALPACA_API_SECRET = "EewsrDutrAV557BaFjW4R4bJYiF2DESkcDdJEC2PMQ4Y"
 
 # Paper Trading vs Live Trading
 # Set to True for paper trading (no real money)
@@ -19,12 +19,12 @@ ALPACA_BASE_URL = ALPACA_PAPER_BASE_URL if PAPER_TRADING else ALPACA_LIVE_BASE_U
 # Trading Settings
 Timezone = "US/Eastern"
 
-# TSLA Strategy A Test Bot Configuration
+# TSLA Strategy A Test Bot Configuration - Test2 Account
 TSLA_BOT_CONFIG = {
     "name": "TSLA Strategy A Test Bot",
     "ticker": "TSLA",
-    "risk_per_trade": 500,      # $500 risk per trade
+    "risk_per_trade": 100,      # $100 risk per trade
     "capital": 5000,            # $5000 starting capital
-    "rr": 5.5,                  # Risk:Reward ratio 5.5:1
+    "rr": 3.0,                  # Risk:Reward ratio 3:1
     "paper_trading": PAPER_TRADING,
 }

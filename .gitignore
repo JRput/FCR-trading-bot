@@ -37,9 +37,9 @@ node_modules/
 *.sqlite
 *.sqlite3
 
-# Data cache (optional - you may want to commit these)
-# Uncomment the line below if you don't want to commit cached data
-# data_cache/
+# Data cache (large CSV files - fetch at runtime instead)
+data_cache/
+*.log
 
 # Personal configs
 personal/

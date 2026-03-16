@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>FCR Backtest Manager</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -232,7 +235,7 @@
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="bot-tab" data-bs-toggle="tab" data-bs-target="#botPanel" type="button" role="tab">
-                    🤖 Live Trading Bot
+                    🤖 Live Bot (Test2)
                 </button>
             </li>
         </ul>
@@ -387,14 +390,15 @@
                 <div class="card bot-card">
                     <div class="card-header text-white d-flex justify-content-between align-items-center">
                         <span>🤖 TSLA Strategy A Test Bot</span>
+                        <span class="badge bg-info me-2" style="font-size: 11px;">TEST2 ACCOUNT</span>
                         <span class="status-badge status-stopped" id="botStatusBadge">STOPPED</span>
                     </div>
                     <div class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-4">
-                                <h5 style="color: #38ef7d; margin-bottom: 5px;">Paper Trading Account</h5>
+                                <h5 style="color: #38ef7d; margin-bottom: 5px;">📄 Test2 Paper Trading Account</h5>
                                 <p style="color: #a0a0b0; font-size: 13px; margin-bottom: 15px;">
-                                    Strategy A on TSLA with $500 risk per trade
+                                    Strategy A on TSLA with $100 risk per trade | 3:1 R:R | $5,000 capital
                                 </p>
                                 <div class="d-flex gap-2">
                                     <button class="btn btn-bot-start" id="btnStartBot" onclick="startBot()">
@@ -402,6 +406,9 @@
                                     </button>
                                     <button class="btn btn-bot-stop" id="btnStopBot" onclick="stopBot()" disabled>
                                         ◼ Stop Bot
+                                    </button>
+                                    <button class="btn btn-outline-warning btn-sm" id="btnResetBot" onclick="resetBot()" title="Reload configuration and reset bot">
+                                        🔄 Reset
                                     </button>
                                 </div>
                             </div>
@@ -449,25 +456,25 @@
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label" style="color: #a0a0b0;">Risk per Trade</label>
-                                    <div style="color: #38ef7d; font-weight: 500;">$500</div>
+                                    <div style="color: #38ef7d; font-weight: 500;" id="configRisk">$100</div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mb-3">
                                     <label class="form-label" style="color: #a0a0b0;">Capital</label>
-                                    <div style="color: #fff; font-weight: 500;">$5,000</div>
+                                    <div style="color: #fff; font-weight: 500;" id="configCapital">$5,000</div>
                                 </div>
                             </div>
                             <div class="col-md-1">
                                 <div class="mb-3">
                                     <label class="form-label" style="color: #a0a0b0;">R:R Ratio</label>
-                                    <div style="color: #fff; font-weight: 500;">5.5:1</div>
+                                    <div style="color: #fff; font-weight: 500;" id="configRR">3:1</div>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <label class="form-label" style="color: #a0a0b0;">Account Type</label>
-                                    <div style="color: #ffd93d; font-weight: 500;">📄 Paper Trading</div>
+                                    <label class="form-label" style="color: #a0a0b0;">Account</label>
+                                    <div style="color: #ffd93d; font-weight: 500;">📄 Test2 (Paper)</div>
                                 </div>
                             </div>
                         </div>
@@ -481,7 +488,7 @@
                                     <li><strong>FVG Detection:</strong> Bullish FVG (candle[i+2].low > candle[i].high) or Bearish FVG</li>
                                     <li><strong>Entry Signal:</strong> Retest into FVG gap + engulfing candle confirmation</li>
                                     <li><strong>First Candle Break:</strong> Price must break FC high (bullish) or FC low (bearish) before FVG forms</li>
-                                    <li><strong>Trade Management:</strong> Fixed stop at retest low/high, target at 5.5R</li>
+                                    <li><strong>Trade Management:</strong> Fixed stop at retest low/high, target at <span id="configRRTarget">3R</span></li>
                                     <li>Maximum 1 trade per day</li>
                                 </ul>
                             </div>
@@ -491,7 +498,12 @@
                 
                 <!-- Bot Status Details -->
                 <div class="card">
-                    <div class="card-header text-white">Live Status</div>
+                    <div class="card-header text-white d-flex justify-content-between align-items-center">
+                        <span>Live Status</span>
+                        <button class="btn btn-sm btn-outline-light" onclick="forceMarketCheck()" style="font-size: 11px;">
+                            🔄 Refresh Market Status
+                        </button>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-3">
@@ -510,6 +522,106 @@
                                 <label class="form-label" style="color: #a0a0b0;">Session Stats</label>
                                 <div id="botSessionStats" style="color: #fff;">W: 0 | L: 0 | BE: 0</div>
                             </div>
+                        </div>
+                        <hr style="border-color: rgba(255,255,255,0.1); margin-top: 15px; margin-bottom: 15px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="form-label" style="color: #a0a0b0;">Market Status</label>
+                                <div id="botMarketStatus" style="color: #fff; font-size: 13px;">Checking...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Active Position Card -->
+                <div class="card" id="activePositionCard" style="display: none;">
+                    <div class="card-header text-white">
+                        📊 Active Position
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-dark table-sm" style="margin-bottom: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th>Direction</th>
+                                            <th>Entry Price</th>
+                                            <th>Quantity</th>
+                                            <th>Stop Loss</th>
+                                            <th>Take Profit</th>
+                                            <th>Current Price</th>
+                                            <th>Unrealized P/L</th>
+                                            <th>Order ID</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="activePositionTable">
+                                        <!-- Populated by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Detected Signals Card -->
+                <div class="card" style="background: #1a1a2e !important; border: 1px solid rgba(56, 239, 125, 0.3) !important; margin-top: 20px !important;">
+                    <div class="card-header text-white d-flex justify-content-between align-items-center" style="background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%) !important;">
+                        <span>🔍 Detected Signals</span>
+                        <span class="badge bg-light text-dark" id="signalsCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <table class="table table-dark table-sm table-hover">
+                                <thead style="position: sticky; top: 0; background: #1a1a2e;">
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Direction</th>
+                                        <th>Entry Price</th>
+                                        <th>FVG Gap</th>
+                                        <th>Stop</th>
+                                        <th>Target</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="signalsTable">
+                                    <tr>
+                                        <td colspan="7" style="text-align: center; color: #888;">No signals detected yet</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Trade History Card -->
+                <div class="card" style="background: #1a1a2e !important; border: 1px solid rgba(255, 217, 61, 0.3) !important; margin-top: 20px !important;">
+                    <div class="card-header text-white d-flex justify-content-between align-items-center" style="background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%) !important;">
+                        <span>📈 Trade History</span>
+                        <span class="badge bg-light text-dark" id="tradesCount">0</span>
+                    </div>
+                    <div class="card-body">
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <table class="table table-dark table-sm table-hover">
+                                <thead style="position: sticky; top: 0; background: #1a1a2e;">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Entry Time</th>
+                                        <th>Direction</th>
+                                        <th>Entry</th>
+                                        <th>Exit</th>
+                                        <th>Stop</th>
+                                        <th>Target</th>
+                                        <th>Quantity</th>
+                                        <th>Outcome</th>
+                                        <th>PnL</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tradeHistoryTable">
+                                    <tr>
+                                        <td colspan="10" style="text-align: center; color: #888;">No trades executed yet</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -707,6 +819,52 @@
             }
         }
         
+        async function resetBot() {
+            if (!confirm('Reset the bot? This will stop any running bot and reload configuration.')) {
+                return;
+            }
+            
+            try {
+                const btn = document.getElementById('btnResetBot');
+                btn.disabled = true;
+                btn.innerHTML = '⏳ Resetting...';
+                
+                const response = await fetch('/api/bot/reset', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.status === 'reset') {
+                    // Update config display
+                    if (result.config) {
+                        document.getElementById('configRisk').innerText = '$' + result.config.risk_per_trade;
+                        document.getElementById('configCapital').innerText = '$' + (result.config.capital || 5000).toLocaleString();
+                        document.getElementById('configRR').innerText = result.config.rr + ':1';
+                        document.getElementById('configRRTarget').innerText = result.config.rr + 'R';
+                    }
+                    
+                    // Update account display
+                    if (result.account) {
+                        document.getElementById('botEquity').innerText = '$' + (result.account.equity || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                        document.getElementById('botBuyingPower').innerText = '$' + (result.account.buying_power || 0).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+                    }
+                    
+                    alert('✅ Bot reset successfully!\n\nAccount: Test2\nEquity: $' + (result.account?.equity || 0).toLocaleString() + '\nRisk: $' + result.config.risk_per_trade + '\nR:R: ' + result.config.rr + ':1');
+                    
+                    updateBotUI(false);
+                    refreshBotStatus();
+                } else if (result.error) {
+                    alert('Error: ' + result.error);
+                }
+                
+                btn.disabled = false;
+                btn.innerHTML = '🔄 Reset';
+                
+            } catch (err) {
+                alert('Error: ' + err.message);
+                document.getElementById('btnResetBot').disabled = false;
+                document.getElementById('btnResetBot').innerHTML = '🔄 Reset';
+            }
+        }
+        
         function updateBotUI(isRunning) {
             const btnStart = document.getElementById('btnStartBot');
             const btnStop = document.getElementById('btnStopBot');
@@ -793,8 +951,76 @@
                 document.getElementById('botSessionStats').innerHTML = 
                     `<span style="color:#38ef7d">W: ${stats.wins || 0}</span> | <span style="color:#ff6b6b">L: ${stats.losses || 0}</span> | <span style="color:#87ceeb">BE: ${stats.be_trades || 0}</span>`;
                 
+                // Update config display from status
+                if (status.config) {
+                    document.getElementById('configRisk').innerText = '$' + (status.config.risk_per_trade || 100);
+                    document.getElementById('configCapital').innerText = '$' + (status.config.capital || 5000).toLocaleString();
+                    document.getElementById('configRR').innerText = (status.config.rr || 3) + ':1';
+                    document.getElementById('configRRTarget').innerText = (status.config.rr || 3) + 'R';
+                }
+                
+                // Update active position table
+                updateActivePosition(status, account);
+                
+                // Update detected signals table
+                updateSignalsTable(status.detected_signals || []);
+                
+                // Update trade history table
+                updateTradeHistoryTable(status.trade_history || []);
+                
+                // Update market status
+                fetch('/api/bot/diagnostic')
+                    .then(res => res.json())
+                    .then(diag => {
+                        const marketStatus = diag.market_status || {};
+                        const marketStatusEl = document.getElementById('botMarketStatus');
+                        const alpacaOpen = marketStatus.alpaca_says_open;
+                        const calculated = marketStatus.calculated_market_hours;
+                        const hour = marketStatus.hour;
+                        const minute = marketStatus.minute;
+                        
+                        let statusText = '';
+                        if (alpacaOpen) {
+                            statusText = `<span style="color:#38ef7d">✅ Market OPEN (Alpaca)</span>`;
+                        } else if (calculated) {
+                            statusText = `<span style="color:#ffd93d">⚠️ Market hours (${hour}:${String(minute).padStart(2, '0')} ET) but Alpaca says CLOSED</span>`;
+                        } else {
+                            statusText = `<span style="color:#ff6b6b">❌ Market CLOSED</span> - Opens at 9:30 AM ET`;
+                        }
+                        
+                        marketStatusEl.innerHTML = statusText + ` | Current time: ${diag.current_time_et || 'N/A'}`;
+                    })
+                    .catch(err => {
+                        console.error('Error fetching market status:', err);
+                    });
+                
             } catch (err) {
                 console.error('Error refreshing bot status:', err);
+            }
+        }
+        
+        async function forceMarketCheck() {
+            try {
+                const btn = event.target;
+                btn.disabled = true;
+                btn.innerHTML = '⏳ Checking...';
+                
+                const response = await fetch('/api/bot/force-market-check', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.status === 'updated') {
+                    alert('✅ Market detected as open! Bot state updated.');
+                } else {
+                    alert(`Market status: ${result.market_open ? 'OPEN' : 'CLOSED'}\nCurrent state: ${result.current_state}`);
+                }
+                
+                refreshBotStatus();
+                btn.disabled = false;
+                btn.innerHTML = '🔄 Refresh Market Status';
+            } catch (err) {
+                alert('Error: ' + err.message);
+                event.target.disabled = false;
+                event.target.innerHTML = '🔄 Refresh Market Status';
             }
         }
         
@@ -811,8 +1037,188 @@
             }
         }
         
+        function updateActivePosition(status, account) {
+            const positionCard = document.getElementById('activePositionCard');
+            const positionTable = document.getElementById('activePositionTable');
+            const activeTrade = status.active_trade;
+            const positions = account.positions || [];
+            const tslaPosition = positions.find(p => p.symbol === 'TSLA');
+            
+            if (activeTrade && activeTrade.direction) {
+                positionCard.style.display = 'block';
+                const currentPrice = tslaPosition ? parseFloat(tslaPosition.current_price) : null;
+                const unrealizedPl = tslaPosition ? parseFloat(tslaPosition.unrealized_pl) : null;
+                const directionColor = activeTrade.direction === 'LONG' ? '#38ef7d' : '#ff6b6b';
+                const plColor = unrealizedPl >= 0 ? '#38ef7d' : '#ff6b6b';
+                
+                positionTable.innerHTML = `
+                    <tr>
+                        <td><span style="color:${directionColor}; font-weight: bold;">${activeTrade.direction}</span></td>
+                        <td>$${activeTrade.entry_price?.toFixed(2) || 'N/A'}</td>
+                        <td>${tslaPosition ? Math.abs(parseInt(tslaPosition.qty)) : 'N/A'}</td>
+                        <td>$${activeTrade.stop_price?.toFixed(2) || 'N/A'}</td>
+                        <td>$${activeTrade.target_price?.toFixed(2) || 'N/A'}</td>
+                        <td>${currentPrice ? '$' + currentPrice.toFixed(2) : 'N/A'}</td>
+                        <td style="color:${plColor}; font-weight: bold;">${unrealizedPl !== null ? '$' + unrealizedPl.toFixed(2) : 'N/A'}</td>
+                        <td style="font-size: 11px; color: #888;">${status.position?.order_id || 'N/A'}</td>
+                    </tr>
+                `;
+            } else {
+                positionCard.style.display = 'none';
+                positionTable.innerHTML = '';
+            }
+        }
+        
+        function updateSignalsTable(signals) {
+            const signalsTable = document.getElementById('signalsTable');
+            const signalsCount = document.getElementById('signalsCount');
+            
+            // Debug: Check if elements exist
+            if (!signalsTable) {
+                console.error('❌ signalsTable element not found in DOM!');
+                return;
+            }
+            if (!signalsCount) {
+                console.error('❌ signalsCount element not found in DOM!');
+                return;
+            }
+            console.log('✅ Signals table elements found');
+            
+            signalsCount.innerText = signals.length;
+            
+            if (signals.length === 0) {
+                signalsTable.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; color: #888;">No signals detected yet</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Sort by time (most recent first)
+            const sortedSignals = [...signals].sort((a, b) => {
+                const timeA = a.timestamp || a.detected_time || a.time || '';
+                const timeB = b.timestamp || b.detected_time || b.time || '';
+                return timeB.localeCompare(timeA);
+            });
+            
+            signalsTable.innerHTML = sortedSignals.map(signal => {
+                const direction = signal.direction || 'N/A';
+                const directionColor = direction === 'LONG' ? '#38ef7d' : '#ff6b6b';
+                const entryPrice = signal.entry_price || signal.price || 0;
+                const stopPrice = signal.stop_price || 0;
+                // Calculate target price if not provided (5.5R ratio)
+                const risk = Math.abs(entryPrice - stopPrice);
+                const targetPrice = signal.target_price || (entryPrice + (direction === 'LONG' ? 1 : -1) * risk * 5.5);
+                const fvgGap = signal.fvg_gap || signal.gap || 'N/A';
+                let status = '<span style="color:#ffd93d">⏳ Pending</span>';
+                if (signal.status === 'executed') {
+                    status = '<span style="color:#38ef7d">✅ Executed</span>';
+                } else if (signal.status === 'failed' || signal.status === 'rejected') {
+                    status = '<span style="color:#ff6b6b">❌ Failed</span>';
+                }
+                const time = signal.timestamp || signal.detected_time || signal.time || 'N/A';
+                
+                return `
+                    <tr>
+                        <td>${time}</td>
+                        <td><span style="color:${directionColor}; font-weight: bold;">${direction}</span></td>
+                        <td>$${entryPrice.toFixed(2)}</td>
+                        <td>${typeof fvgGap === 'string' ? fvgGap : '$' + fvgGap.low?.toFixed(2) + ' - $' + fvgGap.high?.toFixed(2)}</td>
+                        <td>$${stopPrice.toFixed(2)}</td>
+                        <td>$${targetPrice.toFixed(2)}</td>
+                        <td>${status}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function updateTradeHistoryTable(trades) {
+            const tradeHistoryTable = document.getElementById('tradeHistoryTable');
+            const tradesCount = document.getElementById('tradesCount');
+            
+            // Debug: Check if elements exist
+            if (!tradeHistoryTable) {
+                console.error('❌ tradeHistoryTable element not found in DOM!');
+                return;
+            }
+            if (!tradesCount) {
+                console.error('❌ tradesCount element not found in DOM!');
+                return;
+            }
+            console.log('✅ Trade history table elements found');
+            
+            tradesCount.innerText = trades.length;
+            
+            if (trades.length === 0) {
+                tradeHistoryTable.innerHTML = `
+                    <tr>
+                        <td colspan="10" style="text-align: center; color: #888;">No trades executed yet</td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            // Sort by trade number (most recent first)
+            const sortedTrades = [...trades].sort((a, b) => {
+                return (b.trade_num || 0) - (a.trade_num || 0);
+            });
+            
+            tradeHistoryTable.innerHTML = sortedTrades.map(trade => {
+                const direction = trade.direction || 'N/A';
+                const directionColor = direction === 'LONG' ? '#38ef7d' : '#ff6b6b';
+                const outcome = trade.outcome || 'OPEN';
+                let outcomeClass = 'timeout';
+                if (outcome === 'WIN') outcomeClass = 'win';
+                else if (outcome === 'LOSS') outcomeClass = 'loss';
+                else if (outcome === 'BE') outcomeClass = 'be';
+                
+                const pnl = trade.pnl || 0;
+                const pnlColor = pnl >= 0 ? '#38ef7d' : '#ff6b6b';
+                
+                return `
+                    <tr>
+                        <td>${trade.trade_num || '-'}</td>
+                        <td>${trade.entry_time || 'N/A'}</td>
+                        <td><span style="color:${directionColor}; font-weight: bold;">${direction}</span></td>
+                        <td>$${trade.entry_price?.toFixed(2) || 'N/A'}</td>
+                        <td>${trade.exit_price ? '$' + trade.exit_price.toFixed(2) : '-'}</td>
+                        <td>$${trade.stop_price?.toFixed(2) || 'N/A'}</td>
+                        <td>$${trade.target_price?.toFixed(2) || 'N/A'}</td>
+                        <td>${trade.quantity || 'N/A'}</td>
+                        <td class="${outcomeClass}">${outcome}</td>
+                        <td style="color:${pnlColor}; font-weight: bold;">${pnl !== 0 ? '$' + pnl.toFixed(2) : '-'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
         // Initial status check when page loads
         document.addEventListener('DOMContentLoaded', function() {
+            // Debug: Verify sections exist in DOM
+            console.log('🔍 Checking if sections exist in DOM...');
+            const signalsSection = document.getElementById('signalsTable');
+            const tradesSection = document.getElementById('tradeHistoryTable');
+            const activePosSection = document.getElementById('activePositionCard');
+            
+            if (signalsSection) {
+                console.log('✅ Detected Signals section found in DOM');
+            } else {
+                console.error('❌ Detected Signals section NOT found in DOM!');
+            }
+            
+            if (tradesSection) {
+                console.log('✅ Trade History section found in DOM');
+            } else {
+                console.error('❌ Trade History section NOT found in DOM!');
+            }
+            
+            if (activePosSection) {
+                console.log('✅ Active Position section found in DOM');
+            } else {
+                console.error('❌ Active Position section NOT found in DOM!');
+            }
+            
             refreshBotStatus();
             
             // Start polling when bot tab is clicked
